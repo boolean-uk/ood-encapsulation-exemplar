@@ -1,19 +1,56 @@
 class SecretDiary {
-  vault = new Vault()
+  constructor() {
+    this.lock = new Lock()
+    this.contents = []
+  }
+
+  lock() {
+    this.lock.lock()
+  }
+
+  unlock() {
+    this.lock.unlock()
+  }
 
   addEntry(entry) {
-    this.vault.addContent(entry)
+    if (this.lock.isLocked) {
+      throw 'Diary is locked!'
+    }
+
+    this.contents.push(entry)
   }
 
   getEntries() {
-    return this.vault.getContents()
+    if (this.lock.isLocked) {
+      throw 'Diary is locked!'
+    }
+
+    return this.contents
   }
 }
 
-class Vault {
-  isLocked = true
-  contents = []
-  
+class Lock {
+  constructor() {
+    this.isLocked = true
+  }
+
+  lock() {
+    this.isLocked = true
+  }
+
+  unlock() {
+    this.isLocked = false
+  }
+}
+
+// or the inverse
+
+class SecretDiary {
+  constructor() {
+    this.diary = new Diary()
+    this.isLocked = true
+  }
+
   lock() {
     this.isLocked = true
   }
@@ -22,19 +59,33 @@ class Vault {
     this.isLocked = false
   }
 
-  addContent(content) {
+  addEntry(entry) {
     if (this.isLocked) {
-      throw 'Vault is locked!'
+      throw 'Diary is locked!'
     }
 
-    this.contents.push(content)
+    this.diary.addEntry(entry)
   }
 
-  getContents() {
+  getEntries() {
     if (this.isLocked) {
-      throw 'Vault is locked!'
+      throw 'Diary is locked!'
     }
 
+    return this.diary.getEntries()
+  }
+}
+
+class Diary {
+  constructor() {
+    this.contents = []
+  }
+
+  addEntry(entry) {
+    this.contents.push(entry)
+  }
+
+  getEntries() {
     return this.contents
   }
 }
