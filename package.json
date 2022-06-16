@@ -1,0 +1,22 @@
+{
+  "name": "ood-encapsulation-exemplar",
+  "version": "1.0.0",
+  "description": "## Objectives",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glowkeeper/ood-encapsulation-exemplar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glowkeeper/ood-encapsulation-exemplar/issues"
+  },
+  "homepage": "https://github.com/glowkeeper/ood-encapsulation-exemplar#readme",
+  "devDependencies": {
+    "jasmine": "^4.2.0"
+  }
+}
